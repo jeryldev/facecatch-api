@@ -1,9 +1,6 @@
 import Clarifai from 'clarifai';
-// import dotenv from 'dotenv';
-// dotenv.config();
 
-// const app = new Clarifai.App({ apiKey: process.env.FACECATCH_KEY });
-const app = new Clarifai.App({ apiKey: 'aadf650da05c4458b5e39384a37b79d3' });
+const app = new Clarifai.App({ apiKey: process.env.API_CLARIFAI });
 
 const handleApiCall = (req, res) => {
   return app.models
