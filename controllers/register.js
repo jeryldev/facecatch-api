@@ -7,6 +7,7 @@ const handleRegister = (db, bcrypt) => (req, res) => {
   }
   bcrypt.hash(password, saltRounds, function (err, hash) {
     if (err) {
+      console.log(err);
       res.status(400).json('unable to register');
     } else {
       // Store hash in your password DB.
@@ -30,7 +31,10 @@ const handleRegister = (db, bcrypt) => (req, res) => {
           )
           .then(trx.commit)
           .catch(trx.rollback)
-      ).catch((err) => res.status(400).json('unable to register'));
+      ).catch((err) => {
+        console.log(err);
+        return res.status(400).json('unable to register');
+      });
     }
   });
 };
