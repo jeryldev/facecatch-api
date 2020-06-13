@@ -2,25 +2,16 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import cors from 'cors';
 import knex from 'knex';
-import dotenv from 'dotenv';
 
 import register from './controllers/register.js';
 import signin from './controllers/signin.js';
 import profile from './controllers/profile.js';
 import image from './controllers/image.js';
 
-dotenv.config();
-
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 const db = knex({
   client: 'pg',
-  // connection: {
-  //   host: 'localhost',
-  //   user: 'jeryldev',
-  //   password: 'GreatDev2017!',
-  //   database: 'facecatchdb',
-  // },
   connection: {
     connectString: process.env.DATABASE_URL,
     ssl: {
