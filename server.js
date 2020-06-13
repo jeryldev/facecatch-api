@@ -11,13 +11,19 @@ import image from './controllers/image.js';
 
 dotenv.config();
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
 const db = knex({
   client: 'pg',
+  // connection: {
+  //   host: 'localhost',
+  //   user: 'jeryldev',
+  //   password: 'GreatDev2017!',
+  //   database: 'facecatchdb',
+  // },
   connection: {
-    host: 'localhost',
-    user: 'jeryldev',
-    password: 'GreatDev2017!',
-    database: 'facecatchdb',
+    connectString: process.env.DATABASE_URL,
+    ssl: true,
   },
 });
 
