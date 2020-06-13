@@ -36,6 +36,9 @@ app.use(cors());
  * /imageurl --> POST = Clarifai box parameters
  */
 
+// Get - /
+app.get('/', (req, res) => res.send('the api is working'));
+
 // Post - /signin
 app.post('/signin', signin.handleSignIn(db, bcrypt));
 
